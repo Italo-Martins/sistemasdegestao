@@ -9,6 +9,7 @@ import FileController from './app/controllers/FileController';
 import CollaboratorController from './app/controllers/CollaboratorController'
 import AppointmentController from './app/controllers/AppointmentController';
 import ScheduleController from './app/controllers/ScheduleController';
+import NotificationsController from './app/controllers/NotificationsController';
 
 import authMiddleware from './app/middlewares/auth'
 
@@ -41,5 +42,11 @@ routes.get('/schedule', ScheduleController.index)
 
 // Rota de agendamento
 routes.post('/appointment', AppointmentController.store)
+
+// Listagem de Notificações
+routes.get('/notifications', NotificationsController.index)
+
+// Marcar como lidar
+routes.put('/notifications/:id', NotificationsController.update)
 
 export default routes;

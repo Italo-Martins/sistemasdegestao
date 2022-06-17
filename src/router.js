@@ -6,8 +6,13 @@ import multerConfig from './config/multer'
 import UserController from './app/controllers/UserController';
 import SessionController from './app/controllers/SessionController'
 import FileController from './app/controllers/FileController';
+import CollaboratorController from './app/controllers/CollaboratorController'
+import AppointmentController from './app/controllers/AppointmentController';
+import ScheduleController from './app/controllers/ScheduleController';
 
 import authMiddleware from './app/middlewares/auth'
+
+import Database from './database/index'
 
 
 
@@ -24,5 +29,17 @@ routes.put('/user', UserController.update)
 
 //Upload de arquivos.
 routes.post('/files', upload.single('file'), FileController.store)
+
+//Lista Colaboradores
+routes.get('/collaborator', CollaboratorController.index)
+
+// Lista de agendamentos
+routes.get('/appointment', AppointmentController.index)
+
+// Listagem de agendamentos colaborador
+routes.get('/schedule', ScheduleController.index)
+
+// Rota de agendamento
+routes.post('/appointment', AppointmentController.store)
 
 export default routes;
